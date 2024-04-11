@@ -15,3 +15,10 @@ user_text = st.text_area("Введите текст:")
 if st.button("Перевести текст"):
     translated_text = translator(user_text)[0].get('translation_text')
     st.write(f"Результат перевода: {translated_text}")
+
+ # Если текст на английском языке, выводим ошибку
+    if is_english:
+        st.error("Ошибка: Пожалуйста, введите текст на русском языке.")
+    else:
+        translated_text = translator(user_text)[0].get('translation_text')
+        st.write(f"Результат перевода: {translated_text}")
