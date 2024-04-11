@@ -14,11 +14,12 @@ user_text = st.text_area("Введите текст:")
 # Элемент управления для машинного перевода
 if st.button("Перевести текст"):
     # Определяем язык текста по его символам
-    is_english = any(ord(char) > 127 for char in user_text)
+    is_russian = any(ord(char) > 127 for char in user_text)
     
     # Если текст на английском языке, выводим ошибку
-    if is_english:
+    if not is_russian:
         st.error("Ошибка: Пожалуйста, введите текст на русском языке.")
     else:
         translated_text = translator(user_text)[0].get('translation_text')
         st.write(f"Результат перевода: {translated_text}")
+
